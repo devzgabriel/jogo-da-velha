@@ -1,5 +1,4 @@
 import React, { useContext } from "react"
-import t from "prop-types"
 
 import { GameContext } from "../contexts/GameContext"
 
@@ -38,13 +37,4 @@ export default function Square({ value, index }) {
       {value}
     </button>
   )
-}
-
-Square.defaultProps = {
-  value: null,
-}
-
-Square.propTypes = {
-  value: t.string,
-  index: t.number.isRequired,
 }

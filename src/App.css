@@ -1,6 +1,10 @@
 .board-container {
-  max-width: 640px;
-  margin: 0 auto;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .board-container h1 {
@@ -9,7 +13,10 @@
 }
 
 .board {
+  position: absolute;
+  width: 40%;
   display: grid;
+  grid-gap: 25px;
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -21,7 +28,7 @@
   align-items: center;
   font-size: calc(60px + 0.5vw);
   background: none;
-  border: 1px solid #ccc;
+  border: 2px solid #2c7da0;
   cursor: pointer;
 }
 
@@ -38,9 +45,11 @@ p {
 
 .reset button,
 .history button {
-  background: yellow;
+  background: #01497c;
+  color: #eee;
   padding: 10px 20px;
-  border: none;
+  border: 1px solid #012a4a;
+  border-radius: 12px;
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
@@ -52,6 +61,19 @@ p {
 }
 
 .winner {
+  max-width: 200px;
+  background-color: #01497c;
+  padding: 10px 20px;
+  border: 1px solid #012a4a;
+  border-radius: 12px;
   font-size: calc(30px + 0.5vw);
-  color: green;
+  color: #eee;
+}
+
+.history-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 40%;
 }

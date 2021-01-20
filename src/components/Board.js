@@ -1,12 +1,42 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
+import uuid from "uuid/v4"
+
 import { GameContext } from "../contexts/GameContext"
+import calculateWinner from "../utils/calculateWinner"
+
+import Square from "./Square"
+import Player from "./Player"
+import Reset from "./Reset"
+import Winner from "./Winner"
+import History from "./History"
 
 export default function Board() {
-  const context = useContext(GameContext)
+  const { squares, setWhoIsWinner, history } = useContext(GameContext)
+
+  useEffect(() => {
+    const winner = calculateWinner(squares)
+
+    if (winner) {
+      setWhoIsWinner(winner)
+    }
+  }, [history, setWhoIsWinner, squares])
 
   return (
-    <div>
-      <h1>Board</h1>
+    <div className="board-container">
+      <div className="player">
+        <Player />
+        <Winner />
+      </div>
+      <div className="board">
+        {squares.map((value, index) => (
+          <Square value={value} index={index} key={uuid()} />
+        ))}
+      </div>
+
+      <div className="history-container">
+        <Reset />
+        <History />
+      </div>
     </div>
   )
 }

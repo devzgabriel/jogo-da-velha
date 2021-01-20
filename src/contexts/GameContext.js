@@ -1,5 +1,4 @@
 import React, { createContext, useState } from "react"
-import t from "prop-types"
 
 export const GameContext = createContext()
 
@@ -21,8 +20,4 @@ export default function GameContextProvider({ children }) {
   }
 
   return <GameContext.Provider value={state}>{children}</GameContext.Provider>
-}
-
-GameContextProvider.propTypes = {
-  children: t.node.isRequired,
 }
