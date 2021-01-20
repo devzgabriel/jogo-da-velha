@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Exemplo de um jogo:
 
 <h1 align="center">
-    <img alt="Game" title="Game" src=".github/game.png" />
+    <img alt="Game" title="Game" src="./.github/game.png" />
 </h1>
 
 ### `yarn start`
