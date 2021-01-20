@@ -1,10 +1,17 @@
+import React, { useEffect } from "react"
 import "./App.css"
 
-import GameContextProvider from "./contexts/GameContext"
-import Board from "./components/Board"
+import GameContextProvider from "../contexts/GameContext"
+import Board from "../components/Board"
 
-function App() {
-  return <GameContextProvider className="App"></GameContextProvider>
+export default function Home() {
+  useEffect(() => {
+    document.title = "Jogo da velha com React"
+  }, [])
+
+  return (
+    <GameContextProvider>
+      <Board />
+    </GameContextProvider>
+  )
 }
-
-export default App
