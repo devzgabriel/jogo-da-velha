@@ -7,25 +7,28 @@ import calculateWinner from "../utils/calculateWinner"
 import Square from "./Square"
 import Player from "./Player"
 import Reset from "./Reset"
-import Winner from "./Winner"
+// import Winner from "./Winner"
 import History from "./History"
 
 export default function Board() {
-  const { squares, setWhoIsWinner, history } = useContext(GameContext)
+  const {
+    state: { squares },
+    dispatch,
+  } = useContext(GameContext)
 
   useEffect(() => {
     const winner = calculateWinner(squares)
 
     if (winner) {
-      setWhoIsWinner(winner)
+      dispatch({ type: "UPDATE_WINNER", payload: winner })
     }
-  }, [history, setWhoIsWinner, squares])
+  }, [dispatch, squares])
 
   return (
     <div className="board-container">
       <div className="player">
         <Player />
-        <Winner />
+        {/* <Winner /> */}
       </div>
       <div className="board">
         {squares.map((value, index) => (

@@ -1,23 +1,15 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useReducer } from "react"
+
+import GameReducer, { initialState } from "./GameReducer"
 
 export const GameContext = createContext()
 
 export default function GameContextProvider({ children }) {
-  const [squares, setSquares] = useState(Array(9).fill(null))
-  const [isXNext, setIsXNext] = useState(true)
-  const [whoIsWinner, setWhoIsWinner] = useState("")
-  const [history, setHistory] = useState([])
+  const [state, dispatch] = useReducer(GameReducer, initialState)
 
-  const state = {
-    squares,
-    setSquares,
-    isXNext,
-    setIsXNext,
-    whoIsWinner,
-    setWhoIsWinner,
-    history,
-    setHistory,
-  }
-
-  return <GameContext.Provider value={state}>{children}</GameContext.Provider>
+  return (
+    <GameContext.Provider value={{ state, dispatch }}>
+      {children}
+    </GameContext.Provider>
+  )
 }
